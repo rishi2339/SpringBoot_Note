@@ -18,6 +18,8 @@ class JwtAuthFilter(
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
+        System.out.println(System.getenv("MONGODB_CONNECTION_STRING"));
+        System.out.println(System.getenv("JWT_SECRET_BASE64"));
         val authHeader = request.getHeader("Authorization")
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             if(jwtService.validateAccessToken(authHeader)){
